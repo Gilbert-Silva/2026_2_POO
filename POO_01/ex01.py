@@ -7,7 +7,7 @@ class Triangulo:
     
 x = Triangulo()    # Triangulo.__init__(x)  
 print(x.b, x.h) 
-x.b = 10
+x.b = -10
 x.h = 20
 print(x.b, x.h) 
 print(x.calcular_area()) 
