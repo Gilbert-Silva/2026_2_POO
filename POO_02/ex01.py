@@ -1,5 +1,5 @@
 class Triangulo:
-    def __init__(self):
+    def __init__(self):  # Construtor
         self.__b = 0
         self.__h = 0
     def set_base(self, v):
