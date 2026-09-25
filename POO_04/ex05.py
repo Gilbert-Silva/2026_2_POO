@@ -48,13 +48,12 @@ class UI:
             op = UI.menu()
             if op == 1: UI.inserir_playList()
             if op == 2: UI.listar_playLists()
-            #if op == 3: UI.inserir_musica()
-            #if op == 4: UI.listar_musicas()
+            if op == 3: UI.inserir_musica()
+            if op == 4: UI.listar_musicas()
 
     @staticmethod
     def menu():   # 10
-        print("1 - Inserir PlayList, 2 - Listar PlayLists, \
-               3 - Inserir Música, 4 - Listar Músicas, 5 - Fim")
+        print("1 - Inserir PlayList, 2 - Listar PlayLists, 3 - Inserir Música, 4 - Listar Músicas, 5 - Fim")
         return int(input("Escolha uma opção: "))
 
     @classmethod
@@ -69,8 +68,28 @@ class UI:
     def listar_playLists(cls):
         for x in cls.playlists: print(x)
 
-UI.main()        
+    @classmethod
+    def inserir_musica(cls):
+        if len(cls.playlists) == 0:
+            print("Insira uma playlist antes de inserir as músicas!")
+            return
+        for i, x in enumerate(cls.playlists):
+            print(i, " - ", x.get_nome())
+        index = int(input("Informe o número da playlist: "))
+        titulo = input("Informe o título da música: ")
+        artista = input("Informe o artista: ")
+        album = input("Informe o álbum: ")
+        m = Musica(titulo, artista, album)
+        cls.playlists[index].inserir(m)
 
+    @classmethod
+    def listar_musicas(cls):
+        for x in cls.playlists: 
+            print("PlayList:", x.get_nome())
+            for m in x.listar():
+                print("  ", m)
+
+UI.main()        
 
 
 
