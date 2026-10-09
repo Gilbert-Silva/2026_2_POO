@@ -7,16 +7,16 @@ class SituacaoEstagio(enum.Enum):
     Cancelado = 3
     Finalizado = 4
 
-class Estagio:
+class Estagio:  # Entidade
     def __init__(self, est, emp):
-        self.set_estagiario(est)
+        self.set_estagiario(est)     # Atributos
         self.set_empresa(emp)
         self.__data_inicio = None
         self.__data_cancelamento = None
         self.__data_fim = None
         self.__situacao = SituacaoEstagio.Cadastrado
 
-    def set_estagiario(self, est):
+    def set_estagiario(self, est):   # Métodos
         if est == "": raise ValueError("Estagiário deve ser informado")
         self.__estagiario = est
     def set_empresa(self, emp):
@@ -32,7 +32,7 @@ class Estagio:
         self.__situacao = SituacaoEstagio.Iniciado
 
     def cancelar(self, data):
-        if self.__situacao == SituacaoEstagio.Finalizado: raise ValueError("Só é possível cancelar um estágio não finalizado")
+        if self.__situacao != SituacaoEstagio.Iniciado: raise ValueError("Só é possível cancelar um estágio iniciado")
         self.__data_cancelamento = data
         self.__situacao = SituacaoEstagio.Cancelado
 
@@ -95,9 +95,11 @@ class UI:
             if op == 3: UI.listar_estagiario()
             if op == 4: UI.filtrar_situacao()
             if op == 5: UI.iniciar_estagio()
+            if op == 6: UI.cancelar_estagio()
+            if op == 7: UI.finalizar_estagio()
     @staticmethod
     def menu():
-        print("1 - Inserir, 2 - Listar ordenado por empresa, 3 - Listar por estagiário, 4 - Filtrar situação, 5 - Iniciar estágio, 9 - Fim")
+        print("1 - Inserir, 2 - Listar por empresa, 3 - Listar por estagiário, 4 - Filtrar situação, 5 - Iniciar estágio, 6 - Cancelar estágio, 7 - Finalizar estágio, 9 - Fim")
         return int(input("Informe a opção: "))
     @classmethod
     def inserir(cls):
@@ -129,7 +131,18 @@ class UI:
             if x.situacao() == SituacaoEstagio.Cadastrado: print(i, ":", x)
         op = int(input("Informe o número do estágio para iniciar: "))
         cls.estagios[op].iniciar(datetime.now())    
-
+    @classmethod
+    def cancelar_estagio(cls):
+        for i, x in enumerate(cls.estagios):
+            if x.situacao() == SituacaoEstagio.Iniciado: print(i, ":", x)
+        op = int(input("Informe o número do estágio para cancelar: "))
+        cls.estagios[op].cancelar(datetime.now())  
+    @classmethod
+    def finalizar_estagio(cls):
+        for i, x in enumerate(cls.estagios):
+            if x.situacao() == SituacaoEstagio.Iniciado: print(i, ":", x)
+        op = int(input("Informe o número do estágio para finalizar: "))
+        cls.estagios[op].finalizar(datetime.now())  
 UI.main()
 
 """
