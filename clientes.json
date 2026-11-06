@@ -1,1 +1,20 @@
-[{"id": 1, "nome": "Douglas Crockford", "email":"", "fone":""}, {"id": 2, "nome": "Jon Bosak", "email":"", "fone":""}, {"id": 3, "nome": "Eduado", "email":"", "fone":""}]
+[
+  {
+    "id": 1,
+    "nome": "Douglas Crockford",
+    "email": "",
+    "fone": ""
+  },
+  {
+    "id": 2,
+    "nome": "Jon Bosak",
+    "email": "",
+    "fone": ""
+  },
+  {
+    "id": 3,
+    "nome": "Eduardo",
+    "email": "",
+    "fone": ""
+  }
+]

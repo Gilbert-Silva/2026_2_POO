@@ -9,7 +9,7 @@ class ClienteDAO:
         self.__abrir()
         id = 0
         if len(self.__objetos) != 0:
-            id = max(self.__objetos, key = lambda x : x.get_id())
+            id = max(self.__objetos, key = lambda x : x.get_id()).get_id()
         obj.set_id(id + 1)    
         self.__objetos.append(obj)
         self.__salvar()
@@ -42,6 +42,6 @@ class ClienteDAO:
         arquivo.close()
     def __salvar(self):
         arquivo = open(self.__arquivo, mode="w")
-        json.dump(self.__objetos, arquivo, default = Cliente.to_json)
+        json.dump(self.__objetos, arquivo, default = Cliente.to_json, indent = 2)
         arquivo.close()
         

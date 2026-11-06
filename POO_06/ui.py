@@ -31,7 +31,7 @@ class UI:
         fone = input("Informe o novo fone: ")
         c = Cliente(id, nome, email, fone)
         ClienteDAO().atualizar(c)        
-    def excluir()            
+    def excluir():            
         UI.listar()
         id = int(input("Informe o id a ser excluído: "))
         ClienteDAO().excluir(id)        
