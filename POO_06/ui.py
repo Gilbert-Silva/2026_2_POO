@@ -16,12 +16,24 @@ class UI:
     def inserir():
         #id = int(input("Informe o id: "))
         nome = input("Informe o nome: ")
-        c = Cliente(0, nome)
+        email = input("Informe o e-mail: ")
+        fone = input("Informe o fone: ")
+        c = Cliente(0, nome, email, fone)
         ClienteDAO().inserir(c)
     def listar():
         for c in ClienteDAO().listar():
             print(c)
     def atualizar():
+        UI.listar()
+        id = int(input("Informe o id a ser atualizado: "))
+        nome = input("Informe o novo nome: ")
+        email = input("Informe o novo e-mail: ")
+        fone = input("Informe o novo fone: ")
+        c = Cliente(id, nome, email, fone)
+        ClienteDAO().atualizar(c)        
     def excluir()            
+        UI.listar()
+        id = int(input("Informe o id a ser excluído: "))
+        ClienteDAO().excluir(id)        
 
 UI.main()
