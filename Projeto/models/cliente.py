@@ -10,6 +10,18 @@ class Cliente:
         self.id = id
     def get_id(self):
         return self.id
+    def set_nome(self, nome):
+        self.nome = nome
+    def get_nome(self):
+        return self.nome
+    def set_email(self, email):
+        self.email = email
+    def get_email(self):
+        return self.email
+    def set_fone(self, fone):
+        self.fone = fone
+    def get_fone(self):
+        return self.fone
     def to_json(self):
         dic = {}
         dic["id"] = self.id
