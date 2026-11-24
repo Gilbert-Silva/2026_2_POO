@@ -3,12 +3,28 @@
     "id": 1,
     "nome": "Douglas Crockford",
     "email": "",
-    "fone": ""
+    "fone": "",
+    "senha": "1234"
   },
   {
     "id": 2,
     "nome": "Jon Bosak",
     "email": "",
-    "fone": ""
+    "fone": "",
+    "senha": "1234"
+  },
+  {
+    "id": 3,
+    "nome": "admin",
+    "email": "admin",
+    "fone": "fone",
+    "senha": "1234"
+  },
+  {
+    "id": 4,
+    "nome": "Gilbert",
+    "email": "gilbert@email.com",
+    "fone": "1234",
+    "senha": "1234"
   }
 ]
