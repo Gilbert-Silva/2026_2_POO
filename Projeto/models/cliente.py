@@ -1,7 +1,8 @@
 class Cliente:
     def __init__(self, id, nome, email, fone, senha):
         self.id = id
-        self.nome = nome
+        #self.nome = nome
+        self.set_nome(nome)
         self.email = email
         self.fone = fone
         self.senha = senha
@@ -12,6 +13,7 @@ class Cliente:
     def get_id(self):
         return self.id
     def set_nome(self, nome):
+        if nome == "": raise ValueError("Nome não informado")
         self.nome = nome
     def get_nome(self):
         return self.nome

@@ -27,8 +27,11 @@ class ManterClienteUI:
         fone = st.text_input("Informe o fone")
         senha = st.text_input("Informe a senha", type="password")
         if st.button("Inserir"):
-            Service.cliente_inserir(nome, email, fone, senha)
-            st.success("Cliente inserido com sucesso")
+            try:
+                Service.cliente_inserir(nome, email, fone, senha)
+                st.success("Cliente inserido com sucesso")
+            except:
+                st.error("Dados informados são inválidos")    
             time.sleep(2)
             st.rerun()
 
